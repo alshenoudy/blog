@@ -1,0 +1,85 @@
+---
+import Experience from "@/components/Experience.astro";
+import LocalIcon from "@/components/LocalIcon.astro";
+import ProfileHeader from "@/components/ProfileHeader.astro";
+import { siteConfig } from "@/config/customize";
+
+/*
+ * Home hero: identity header, social contact links, and experience. All
+ * content is read from `siteConfig`, so editing the home page content is
+ * limited to the single config file.
+ */
+const { experience, resumeUrl, email, socials } = siteConfig;
+const hasResume = resumeUrl.trim().length > 0;
+
+const iconByLabel: Record<string, "envelope" | "github" | "google" | "linkedin" | "twitter-x" | undefined> = {
+  GitHub: "github",
+  "Google Scholar": "google",
+  LinkedIn: "linkedin",
+};
+
+const heroLinks = [
+  ...socials
+    .filter((item) => item.label !== "RSS")
+    .map((item) => ({
+      label: item.label,
+      href: item.href,
+      external: item.href.startsWith("http"),
+      icon: iconByLabel[item.label],
+    })),
+  { label: "Email", href: `mailto:${email}`, external: false, icon: "envelope" as const },
+  ...(hasResume ? [{ label: "Resume", href: resumeUrl, external: true, icon: undefined }] : []),
+];
+---
+
+<section class="profile-hero" aria-label="Introduction">
+  <ProfileHeader />
+
+  {
+    heroLinks.length > 0 && (
+      <ul class="profile-hero__links" aria-label="Contact links">
+        {heroLinks.map((link) => (
+          <li>
+            <a href={link.href} class="pill profile-hero__pill" rel={link.external ? "noreferrer" : undefined}>
+              {link.icon && <LocalIcon name={link.icon} className="h-4 w-4" />}
+              <span>{link.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    experience.length > 0 && (
+      <div class="profile-hero__experience">
+        <h2 class="section-title">Experience</h2>
+        <Experience experience={experience} />
+      </div>
+    )
+  }
+</section>
+
+<style>
+  .profile-hero {
+    max-width: 60ch;
+  }
+
+  .profile-hero__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .profile-hero__experience {
+    margin: var(--space-section) 0 0;
+  }
+
+  .profile-hero__pill {
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+  }
+</style>

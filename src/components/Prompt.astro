@@ -1,0 +1,34 @@
+---
+import { siteConfig } from "@/config/customize";
+
+/**
+ * Terminal-style section label. Renders plain text with a leading `❯`
+ * picked out in the accent color. Defaults to `siteConfig.tagline`.
+ */
+interface Props {
+  /** Label text. The leading `❯` is rendered automatically. */
+  text?: string;
+  class?: string;
+}
+
+const { text = siteConfig.tagline, class: className } = Astro.props;
+---
+
+<p class:list={["prompt", className]}>
+  <span class="prompt__prefix">❯</span>
+  {text}
+</p>
+
+<style>
+  .prompt {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    color: var(--muted-foreground);
+  }
+
+  .prompt__prefix {
+    color: var(--accent);
+  }
+</style>

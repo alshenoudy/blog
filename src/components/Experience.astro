@@ -1,0 +1,111 @@
+---
+import type { Experience } from "@/config/customize";
+
+interface Props {
+  /** CV entries to render. Pass an empty array to hide the section entirely. */
+  experience: Experience[];
+}
+
+const { experience } = Astro.props;
+---
+
+{
+  experience.length > 0 && (
+    <section class="experience" aria-label="Experience">
+      {experience.map((entry) => (
+        <div class="experience__entry">
+          <p class="experience__period">{entry.period}</p>
+          <div class="experience__body">
+            <h3 class="experience__title">
+              {entry.href ? (
+                <a href={entry.href} class="experience__title-link">{entry.title}</a>
+              ) : (
+                entry.title
+              )}
+              {entry.position && (
+                <span class="experience__position"> — {entry.position}</span>
+              )}
+            </h3>
+            {entry.description && (
+              <p class="experience__description">{entry.description}</p>
+            )}
+          </div>
+        </div>
+      ))}
+    </section>
+  )
+}
+
+<style>
+  .experience {
+    display: grid;
+  }
+
+  .experience__entry {
+    display: grid;
+    grid-template-columns: 10rem minmax(0, 1fr);
+    gap: 1rem 1.75rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px dashed var(--border-strong);
+  }
+
+  .experience__entry:first-child {
+    padding-top: 0;
+  }
+
+  .experience__entry:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .experience__period {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  /* Double class selector to beat `.prose h3` specificity when the component
+     is rendered inside an article body. */
+  .experience__title.experience__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--foreground);
+  }
+
+  .experience__title-link {
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .experience__title-link:hover,
+  .experience__title-link:focus-visible {
+    color: var(--accent);
+  }
+
+  .experience__position {
+    font-weight: 400;
+    color: var(--muted-foreground);
+  }
+
+  /* Double class to keep description sizing even inside `.prose p`. */
+  .experience__description.experience__description {
+    margin: 0.5rem 0 0;
+    color: var(--muted-foreground);
+    font-size: var(--font-size-md);
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 640px) {
+    .experience__entry {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+  }
+</style>

@@ -1,0 +1,111 @@
+---
+import type { Education } from "@/config/customize";
+
+interface Props {
+  /** Education entries to render. Pass an empty array to hide the section. */
+  education: Education[];
+}
+
+const { education } = Astro.props;
+---
+
+{
+  education.length > 0 && (
+    <section class="education" aria-label="Education">
+      {education.map((entry) => (
+        <div class="education__entry">
+          <p class="education__period">{entry.period}</p>
+          <div class="education__body">
+            <h3 class="education__title">
+              {entry.href ? (
+                <a href={entry.href} class="education__title-link">{entry.title}</a>
+              ) : (
+                entry.title
+              )}
+              {entry.institution && (
+                <span class="education__institution"> — {entry.institution}</span>
+              )}
+            </h3>
+            {entry.description && (
+              <p class="education__description">{entry.description}</p>
+            )}
+          </div>
+        </div>
+      ))}
+    </section>
+  )
+}
+
+<style>
+  .education {
+    display: grid;
+  }
+
+  .education__entry {
+    display: grid;
+    grid-template-columns: 10rem minmax(0, 1fr);
+    gap: 1rem 1.75rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px dashed var(--border-strong);
+  }
+
+  .education__entry:first-child {
+    padding-top: 0;
+  }
+
+  .education__entry:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .education__period {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  /* Double class selector to beat `.prose h3` specificity when rendered
+     inside an article body. */
+  .education__title.education__title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--foreground);
+  }
+
+  .education__title-link {
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .education__title-link:hover,
+  .education__title-link:focus-visible {
+    color: var(--accent);
+  }
+
+  .education__institution {
+    font-weight: 400;
+    color: var(--muted-foreground);
+  }
+
+  /* Double class to keep description sizing even inside `.prose p`. */
+  .education__description.education__description {
+    margin: 0.5rem 0 0;
+    color: var(--muted-foreground);
+    font-size: var(--font-size-md);
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  @media (max-width: 640px) {
+    .education__entry {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+  }
+</style>
