@@ -1,7 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Monograph">
-  <rect width="32" height="32" rx="6" fill="#17171a" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="a">
+  <style>
+    .box {
+      fill: #17171a;
+    }
+    .letter {
+      fill: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      .box {
+        fill: #f2f2f3;
+      }
+      .letter {
+        fill: #101012;
+      }
+    }
+  </style>
+  <rect class="box" width="32" height="32" rx="6" />
   <path
-    d="M8 23V9h3.4L16 18.2 20.6 9H24v14h-3.1v-8.3L16.9 23h-1.8L11.1 14.7V23H8Z"
-    fill="#ffffff"
+    class="letter"
+    d="M14.91 25.89Q11.92 25.89 10.22 24.24Q8.52 22.59 8.52 19.96Q8.52 18.22 9.3 16.92Q10.08 15.62 11.47 14.87Q12.86 14.13 14.66 14.13H20.74V12.53Q20.74 8.51 16.5 8.51Q14.59 8.51 13.43 9.27Q12.27 10.03 12.17 11.32H9.42Q9.6 9.06 11.49 7.59Q13.38 6.11 16.5 6.11Q19.87 6.11 21.67 7.78Q23.48 9.44 23.48 12.46V25.54H20.77V21.97H20.74Q20.46 23.77 18.91 24.83Q17.37 25.89 14.91 25.89ZM15.6 23.53Q17.96 23.53 19.35 22.37Q20.74 21.2 20.74 19.19V16.31H14.91Q13.31 16.31 12.3 17.3Q11.3 18.29 11.3 19.85Q11.3 21.52 12.44 22.52Q13.59 23.53 15.6 23.53Z"
   />
 </svg>

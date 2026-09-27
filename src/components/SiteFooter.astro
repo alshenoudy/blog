@@ -35,7 +35,9 @@ const currentYear = new Date().getFullYear();
 
     <div class="mt-10 grid gap-10 text-center md:grid-cols-3 md:items-center md:gap-8 md:text-left">
       <div>
-        <a href="/" class="wordmark">{siteConfig.brand}</a>
+        <a href="/" class="wordmark">
+          <span>{siteConfig.brand}</span>
+        </a>
         <p class="mt-2 text-xs text-muted-foreground">&copy; {currentYear}. All rights reserved.</p>
       </div>
 

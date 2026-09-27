@@ -51,8 +51,8 @@ export type Social = {
   href: string;
 };
 
-const brand = "John's blog";
-const name = "John Doe";
+const brand = "ahmed's blog";
+const name = "Ahmed Alshenoudy";
 
 export const siteConfig = {
   /* ------------------------------------------------------------- identity --- */
@@ -62,13 +62,13 @@ export const siteConfig = {
   /** Author name — home hero, About page, and contact page. */
   name,
   /** Short line directly under the name in the home hero and the About page header. */
-  role: "Writer & software engineer",
+  role: "AI Researcher & Developer",
   /** Intro paragraph in the home hero and the About page header. */
-  about: "AI Researcher & Developer test",
+  about: "Hi! I'm Ahmed, this is my personal blog where I share some of the things I am learning and working on. I currently work @RISC Software GmbH as a Researcher and Developer focusing on AI in radiology. I am also doing my PhD at Johannes Kepler University Linz at the institue of Computational Perception.",
   /** Terminal-style label rendered as `❯ tagline` by the Prompt component. */
   tagline: "whoami",
   /** Contact email shared by the hero, the About page, and the contact page. */
-  email: "hello@example.com",
+  email: "ahmed.alshenoudy@gmail.com",
   /** Optional resume link. Leave empty to hide the Resume pill. */
   resumeUrl: "",
 
@@ -87,29 +87,29 @@ export const siteConfig = {
    */
   experience: [
     {
-      period: "2026 — Now",
-      title: "Staff Engineer",
+      period: "2023 — Now",
+      title: "Researcher & Developer",
       href: "",
-      position: "Meridian Labs",
+      position: "RISC Software GmbH",
       description:
         "Own the design-system platform every product team builds on: tokens, primitives, docs, and the migration path off the legacy kit.",
     },
     {
-      period: "2019 — 2026",
-      title: "Senior Engineer",
+      period: "2021 — 2023",
+      title: "Researcher & Developer",
       href: "",
-      position: "Platform teams, Northwind",
+      position: "RISC Software GmbH",
       description:
-        "Led the rebuild of the publishing pipeline. Cut p95 render time by 60% and made deploys boring.",
+        "Part-time employment at the Medical Informatics Unit, mainly working on medical preprocessing pipelines and my Master's thesis project.",
     },
     {
-      period: "2016 — 2019",
-      title: "Frontend Engineer",
+      period: "2017 — 2019",
+      title: "Field Engineer",
       href: "",
-      position: "Studio Mono",
+      position: "Schlumberger",
       description:
-        "Shipped marketing and editorial sites for clients, and learned to write markup that survives a redesign.",
-    },
+        "Worked on surface well-testing and data acqusition systems for oil and gas exploration and production. Managing teams in challenging on-shore and off-shore environments deliveriing under tight deadlines and high safety standards.",
+    }
   ] as Experience[],
 
   /**
@@ -119,15 +119,15 @@ export const siteConfig = {
   education: [
     {
       period: "2021 — 2023",
-      title: "M.Sc. in Computer Science",
-      institution: "Example University",
+      title: "M.Sc. in Artificial Intelligence",
+      institution: "Johannes Kepler University Linz",
       description:
         "Specialization in distributed systems and human-computer interaction. Thesis on incremental static site generation.",
     },
     {
-      period: "2016 — 2020",
-      title: "B.Eng. in Software Engineering",
-      institution: "Example Polytechnic",
+      period: "2011 — 2016",
+      title: "B.Sc. in Mechatronics Engineering",
+      institution: "German University in Cairo",
       description:
         "Honours project on resilient UI component systems. Graduated with first-class honours.",
     },
@@ -156,14 +156,22 @@ export const siteConfig = {
    */
   publications: [
     {
-      title: "Incremental Builds for Static Publishing Pipelines",
-      venue: "Journal of Web Engineering",
+      title: "Semi-supervised brain tumor segmentation using diffusion models",
+      href: "https://doi.org/10.1007/978-3-031-34111-3_27",
+      venue: "Artificial Intelligence Applications and Innovations (AIAI)",
+      year: "2023",
+    },
+    {
+      title: "Towards segmenting cerebral arteries from structural MRI",
+      href: "https://doi.org/10.1007/978-3-031-66955-2_2",
+      venue: "Medical Imaging Understanding and Analysis (MIUA)",
       year: "2024",
     },
     {
-      title: "Design Tokens That Survive Product Growth",
-      venue: "Systems Design Talks",
-      year: "2023",
+      title: "Leveraging synthetic data for whole-body segmentation in x-ray images",
+      href: "https://doi.org/10.1007/978-3-031-98688-8_11",
+      venue: "Medical Imaging Understanding and Analysis (MIUA)",
+      year: "2025",
     },
   ] as Publication[],
 
@@ -174,28 +182,26 @@ export const siteConfig = {
   skills: [
     {
       group: "Languages",
-      items: ["TypeScript", "Python", "Go", "Rust", "SQL", "Bash"],
+      items: ["Arabic :: native", "English :: fluent", "German :: intermediate"],
     },
     {
-      group: "Tools & Frameworks",
-      items: ["Astro", "React", "Node.js", "Tailwind CSS", "PostgreSQL", "Docker"],
-    },
-    {
-      group: "Platforms & Cloud",
-      items: ["AWS", "Cloudflare", "Vercel", "GitHub Actions", "Kubernetes"],
-    },
+      group: "Technical",
+      items: ["Medical Imaging", "Computer Vision", "Machine Learning", "Deep Learning", "Data Pipelines", "Anomaly Detection", 
+              "Semantic Segmentation", "Generative Models", "DICOM"],
+    }
   ] as SkillGroup[],
 
   /**
    * Flat list of interests, rendered as a single group of chips.
    */
   interests: [
-    "Static site generators",
-    "Design systems",
-    "Developer experience",
-    "Type safety",
-    "Technical writing",
-    "Open source tooling",
+    "Software Engineering",
+    "Product Development",
+    "Medical Imaging",
+    "Agentic AI",
+    "Computer Vision",
+    "System Design",
+    "Large Language Models",
   ],
 
   /* --------------------------------------------------------- site metadata --- */
@@ -207,7 +213,7 @@ export const siteConfig = {
   /** Canonical domain. Must be set before building for production. */
   siteUrl: "https://monograph.xocoweb.workers.dev",
   /** Fills the SEO and JSON-LD author fields. */
-  authorName: "Andrei Alba",
+  authorName: "Ahmed Alshenoudy",
   language: "en",
   dateLocale: "en-US",
   locale: "en_US",
@@ -221,9 +227,9 @@ export const siteConfig = {
    * external links.
    */
   socials: [
-    { label: "LinkedIn", href: "https://linkedin.com" },
-    { label: "GitHub", href: "https://github.com" },
-    { label: "Google Scholar", href: "https://scholar.google.com" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/ahmed-alshenoudy/" },
+    { label: "GitHub", href: "https://github.com/alshenoudy" },
+    { label: "Google Scholar", href: "https://scholar.google.com/citations?user=GisGMpkAAAAJ&hl" },
     { label: "RSS", href: "/rss.xml" },
   ] as Social[],
 

@@ -13,10 +13,15 @@ settings. Every page and component imports from this one file; nothing else need
 Set `siteConfig.siteUrl` before building for production. Canonical URLs, social image URLs, RSS,
 `robots.txt`, the sitemap, and JSON-LD all derive from it.
 
-The header shows `siteConfig.brand` as plain text. There is no logo slot by design — if you want an
-image mark, replace the `.wordmark` anchor in
-[src/components/SiteHeader.astro](./src/components/SiteHeader.astro) and the matching one in
-[src/components/SiteFooter.astro](./src/components/SiteFooter.astro).
+The header shows `siteConfig.brand` as a plain text wordmark. The boxed lowercase "a" mark lives
+only as the browser tab icon: [public/favicon.svg](./public/favicon.svg) (theme-aware via
+`prefers-color-scheme`), traced from the JetBrains Mono typeface (Light weight) and sized to the
+golden ratio (letter height 32/phi inside the 32-unit box), with PNG fallbacks
+`public/favicon-32.png`, `public/favicon-16.png`, and `public/apple-touch-icon.png` (full-bleed;
+iOS masks its own corners), all wired in [src/layouts/BaseLayout.astro](./src/layouts/BaseLayout.astro).
+The wordmark anchors live in [src/components/SiteHeader.astro](./src/components/SiteHeader.astro),
+[src/components/SiteFooter.astro](./src/components/SiteFooter.astro), and
+[src/components/MobileMenuPanel.astro](./src/components/MobileMenuPanel.astro).
 
 ### Home Hero CV
 
